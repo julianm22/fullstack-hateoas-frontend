@@ -1,10 +1,27 @@
+import React, { Component } from "react";
+import AddButton from "./AddButton";
+import Capability from "./Capability";
+import { connect } from "react-redux";
+import { getAllCapabilities } from "../../actions/CapabilityActions";
 
+class Dashboard extends Component {
+  componentDidMount() {
+    this.props.getAllCapabilities();
+  }
 
-const Dashboard = (props) => {
-
+  render() {
     return (
-        <h1>Dashboard</h1>
-    )
+      <React.Fragment>
+        <AddButton />
+        <Capability />
+        <Capability />
+        <Capability />
+      </React.Fragment>
+    );
+  }
 }
 
-export default Dashboard;
+export default connect(
+  null,
+  { getAllCapabilities }
+)(Dashboard);
