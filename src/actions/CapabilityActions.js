@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_CAPABILITY, GET_CAPABILITIES } from "./ActionTypes";
+import { ADD_CAPABILITY, DELETE_CAPABILITY, GET_CAPABILITIES } from "./ActionTypes";
 
 export const getAllCapabilities = () => async dispatch => {
     try {
@@ -21,5 +21,14 @@ export const deleteCapability = (id, deleteLink) => async dispatch => {
     dispatch({
         type: DELETE_CAPABILITY,
         payload: id
+    });
+};
+
+export const addCapability = (capability, closeModal) => async dispatch => {
+    const res = await axios.post("http://localhost:8080/dashboard", capability);
+    closeModal();
+    dispatch ({
+        type: ADD_CAPABILITY,
+        payload: res.data
     });
 };
