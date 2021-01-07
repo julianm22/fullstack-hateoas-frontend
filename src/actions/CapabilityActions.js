@@ -1,5 +1,12 @@
 import axios from "axios";
-import { ADD_CAPABILITY, DELETE_CAPABILITY, GET_CAPABILITIES, GET_ERRORS } from "./ActionTypes";
+import { 
+    ADD_CAPABILITY, 
+    DELETE_CAPABILITY, 
+    GET_CAPABILITIES, 
+    GET_CAPABILITY, 
+    GET_ERRORS, 
+    CLEAR_CAPABILITY_CLOSE_MODAL 
+} from "./ActionTypes";
 
 export const getAllCapabilities = () => async dispatch => {
     try {
@@ -44,4 +51,18 @@ export const addCapability = (capability, closeModal, postLink) => async dispatc
             payload: error.response.data
         });
     }
+};
+
+export const getCapabilityById = id => async dispatch => {
+    dispatch({
+        type: GET_CAPABILITY,
+        payload: id
+    });
+};
+
+export const closeModalClearState = () => async dispatch => {
+    dispatch({
+        type: CLEAR_CAPABILITY_CLOSE_MODAL,
+        payload: {}
+    });
 };
