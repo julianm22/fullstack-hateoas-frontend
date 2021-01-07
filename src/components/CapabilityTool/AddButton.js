@@ -33,7 +33,7 @@ export class AddButton extends Component {
                     >
                         <i className="far fa-plus-square" /> Add Capability
                     </button>
-                    <Modal isOpen={this.state.modalIsOpen} style={customStyles} >
+                    <Modal isOpen={this.state.modalIsOpen} style={customStyles} ariaHideApp={false} >
                         <button 
                             type="button"
                             className="btn btn-danger mb-2"
