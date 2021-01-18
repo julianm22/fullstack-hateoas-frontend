@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
 import AddCapability from "./AddCapability";
+import { closeModalClearState } from "../../actions/CapabilityActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 const customStyles = {
     content: {
@@ -19,6 +22,7 @@ export class AddButton extends Component {
     };
 
     closeModal = () => {
+        this.props.closeModalClearState();
         this.setState({ modalIsOpen: false });
     };
 
@@ -49,4 +53,8 @@ export class AddButton extends Component {
     }
 }
 
-export default AddButton;
+AddButton.propTypes = {
+    closeModalClearState: PropTypes.func.isRequired
+};
+
+export default connect(null, { closeModalClearState })(AddButton);
